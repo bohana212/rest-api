@@ -12,7 +12,7 @@
    <meta property="og:url" content="https://www.apis-anomaki.zone.id">
    <meta property="og:type" content="website">
   
-    <meta property="og:title" content="Hanns Apis">
+    <meta property="og:title" content="Anomaki Apis">
     <meta property="og:description" content="Koleksi API gratis">
     <meta property="og:type" content="website">
     <title>Anomaki Apis | API Gratis</title>
@@ -781,7 +781,7 @@
         </div>
         
         <header>
-            <button class="theme-toggle" id="themeToggle">❤️ Dark Mode</button>
+            <button class="theme-toggle" id="themeToggle">🌙 Dark Mode</button>
             <h1 id="api-name">Anomaki Apis</h1>
             <div class="status" id="api-status">Online</div>
             <p class="description" id="api-description">Simple Rest Api.</p>
@@ -794,7 +794,7 @@
         <div id="categories-container"></div>
         
         <footer>
-            <p>Dibuat dengan ❤ oleh <span id="api-creator">Han Apis</span></p>
+            <p>Dibuat dengan ❤ oleh <span id="api-creator">Anomaki Apis</span></p>
             <p>Versi <span id="api-version">v1.0</span></p>
         </footer>
     </div>

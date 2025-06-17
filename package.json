@@ -1,7 +1,7 @@
 {
   "name": "AnoApis",
   "version": "1.0",
-  "description": "AnoApis- Koleksi API Gratis untuk Developer Indonesia",
+  "description": "Hann Koleksi API Gratis untuk Developer Indonesia",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",

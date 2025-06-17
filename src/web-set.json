@@ -2,12 +2,12 @@
   "name": "Rest Apis",
   "version": "v1.0",
   "description": "Rest Api Simple",
-  "bannerImage": "https://files.catbox.moe/0a58nf.jpg",
+  "bannerImage": "https://files.catbox.moe/9nk1q1.gif",
   "header": {
     "status": "Online!"
   },
   "apiSettings": {
-    "creator": "Xyzan - Anomaki",
+    "creator": "Hann - Ind",
     "globalKey": ["yo"],
     "defaultRequireKey": true
   },
