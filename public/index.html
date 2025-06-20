@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Strix Apis | Public API for Developers</title>
+  <meta name="description" content="REST API Gratis & Modern untuk Developer Profesional oleh Strix Team" />
+  <meta name="author" content="Strix Team Operation" />
+  
+  <!-- Favicon & Meta OG -->
+  <link rel="icon" href="https://i.pinimg.com/236x/4d/01/91/4d0191ec96622626c52b9691c74d677e.jpg" />
+  <meta property="og:title" content="Strix Apis" />
+  <meta property="og:description" content="REST API Publik untuk Developer Handal" />
+  <meta property="og:image" content="https://i.pinimg.com/236x/4d/01/91/4d0191ec96622626c52b9691c74d677e.jpg" />
+  <meta property="og:type" content="website" />
+  
+  <!-- Font & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <!-- Hero / Header -->
+    <header class="hero">
+      <div class="hero-content">
+        <h1 class="title">Strix Public APIs</h1>
+        <p class="subtitle">REST API Gratis dan Powerful untuk Developer Indonesia.</p>
+        <div class="typing-banner">
+          <div id="typingText" class="typing-text"></div>
+        </div>
+        <div class="search-container">
+          <input type="text" id="searchInput" class="search-input" placeholder="Cari endpoint seperti: /tiktok, /ai, /yt-mp4..." />
+        </div>
+      </div>
+    </header>
+
+    <!-- Konten API -->
+    <main>
+      <div id="categories-container"></div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+      <p>Dibuat oleh <strong>Strix Team Operation</strong> · Versi <span id="api-version">v1.0</span></p>
+    </footer>
+  </div>
+
+  <!-- Notifikasi -->
+  <div class="notification-box" id="customNotification" style="display: none;">
+    <i id="notifIcon" class="fas fa-info-circle"></i>
+    <span id="notifMessage">Notifikasi disini</span>
+  </div>
+
+  <!-- Popup -->
+  <div class="popup" id="apiPopup" style="display: none;">
+    <div class="popup-content">
+      <div class="popup-header">
+        <h2 class="popup-title" id="popupTitle">Hasil API</h2>
+        <button class="close-popup" id="closePopup">×</button>
+      </div>
+      <div class="popup-body" id="popupBody"></div>
+      <div class="popup-footer">
+        <button class="copy-btn" id="copyResultBtn"><i class="fas fa-copy"></i> Salin</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Script -->
+  <script src="script.js"></script>
+</body>
+</html>

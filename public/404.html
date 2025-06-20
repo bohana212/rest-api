@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>404 - Halaman Tidak Ditemukan</title>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-main: linear-gradient(135deg, #ffe0f0, #e0f7fa);
+      --glass-bg: rgba(255, 255, 255, 0.45);
+      --primary: #ff79c6;
+      --shadow: rgba(255, 121, 198, 0.3);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Quicksand', sans-serif;
+      background: var(--bg-main);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      animation: fadeIn 1s ease;
+    }
+
+    .card {
+      background: var(--glass-bg);
+      border-radius: 20px;
+      padding: 50px 30px;
+      text-align: center;
+      backdrop-filter: blur(15px);
+      border: 1px solid rgba(255,255,255,0.2);
+      box-shadow: 0 8px 24px var(--shadow);
+      max-width: 400px;
+      width: 90%;
+      animation: popIn 0.8s ease;
+    }
+
+    .anime-img {
+      width: 130px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      margin-bottom: 20px;
+      animation: float 4s ease-in-out infinite;
+    }
+
+    h1 {
+      font-size: 4rem;
+      font-weight: 600;
+      color: #ff4081;
+      margin-bottom: 10px;
+    }
+
+    h2 {
+      font-size: 1.5rem;
+      color: #333;
+      margin-bottom: 12px;
+    }
+
+    p {
+      font-size: 1rem;
+      color: #555;
+      margin-bottom: 30px;
+    }
+
+    .btn {
+      display: inline-block;
+      background-color: var(--primary);
+      color: #fff;
+      padding: 12px 24px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: 600;
+      box-shadow: 0 4px 14px var(--shadow);
+      transition: all 0.3s ease;
+    }
+
+    .btn:hover {
+      background-color: #ff4081;
+      transform: translateY(-2px);
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    @keyframes popIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @media (max-width: 480px) {
+      h1 { font-size: 3rem; }
+      h2 { font-size: 1.2rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <img src="https://files.catbox.moe/6qt6lk.gif" alt="Cute Anime Girl" class="anime-img" />
+    <h1>404</h1>
+    <h2>Oops! Halaman tidak ditemukan</h2>
+    <p>Maaf ya, halaman yang kamu cari nggak ada di sini. Yuk kembali ke halaman utama!</p>
+    <a href="index.html" class="btn">Kembali ke Beranda</a>
+  </div>
+</body>
+</html>

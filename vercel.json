@@ -1,0 +1,15 @@
+{
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "destination": "https://strix-cloud-panel.my.id/$1",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.strix-cloud-panel.my.id"
+        }
+      ],
+      "statusCode": 301
+    }
+  ]
+}
