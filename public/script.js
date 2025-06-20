@@ -25,9 +25,7 @@ const messages = [
   "Strix Apis bantu produktivitasmu!"
 ];
 
-let msgIndex = 0;
-let charIndex = 0;
-let isDeleting = false;
+let msgIndex = 0, charIndex = 0, isDeleting = false;
 
 function animateTyping() {
   const current = messages[msgIndex];
@@ -47,7 +45,7 @@ function animateTyping() {
 }
 animateTyping();
 
-// === Custom Notification ===
+// === Notification System ===
 function showCustomNotification(type, message) {
   const box = document.getElementById('customNotification');
   const icon = box.querySelector('i');
@@ -70,7 +68,7 @@ function showCustomNotification(type, message) {
   setTimeout(() => box.style.display = 'none', 4000);
 }
 
-// === Search & Filter ===
+// === Search Handler ===
 const searchInput = document.getElementById('searchInput');
 searchInput.addEventListener('input', debounce(handleSearch, 300));
 
@@ -83,32 +81,31 @@ function debounce(func, wait) {
 }
 
 function handleSearch() {
-  const term = searchInput.value.toLowerCase();
-  document.querySelectorAll('.api-card').forEach(card => {
-    const name = card.dataset.apiName || '';
-    const desc = card.dataset.apiDesc || '';
-    const visible = name.includes(term) || desc.includes(term);
-    card.style.display = visible ? 'block' : 'none';
+  const term = searchInput.value.toLowerCase().trim();
+  const categories = document.querySelectorAll('.category');
 
-    const category = card.closest('.category');
-    if (category) {
-      const hasVisible = [...category.querySelectorAll('.api-card')].some(c => c.style.display !== 'none');
-      category.style.display = hasVisible ? 'block' : 'none';
-    }
+  categories.forEach(category => {
+    let hasVisible = false;
+    category.querySelectorAll('.api-card').forEach(card => {
+      const name = card.dataset.apiName || '';
+      const desc = card.dataset.apiDesc || '';
+      const visible = term === '' || name.includes(term) || desc.includes(term);
+      card.style.display = visible ? 'block' : 'none';
+      if (visible) hasVisible = true;
+    });
+    category.style.display = hasVisible ? 'block' : 'none';
   });
 }
 
-// === Load API from JSON ===
+// === Load JSON Data ===
 async function loadApiData() {
   try {
-    const res = await fetch('/web-set.json'); // <--- Perbaikan disini
+    const res = await fetch('/web-set.json');
     if (!res.ok) throw new Error('Gagal memuat data');
 
     const data = await res.json();
-    document.getElementById('api-name').textContent = data.name;
-    document.getElementById('api-status').textContent = data.header.status;
-    document.getElementById('api-description').textContent = data.description;
-    document.getElementById('api-creator').textContent = data.apiSettings.creator;
+
+    // Optional: bisa dimunculkan ke HTML lain jika diperlukan
     document.getElementById('api-version').textContent = data.version;
 
     const container = document.getElementById('categories-container');
@@ -184,13 +181,18 @@ async function loadApiData() {
       categoryEl.append(title, grid);
       container.appendChild(categoryEl);
     });
+
+    // === FIX PENTING ===
+    searchInput.value = '';
+    handleSearch();
+
   } catch (error) {
     showCustomNotification('error', 'Gagal memuat data API');
   }
 }
 loadApiData();
 
-// === Try Popup ===
+// === Try Popup & Execute ===
 const apiPopup = document.getElementById('apiPopup');
 const closePopup = document.getElementById('closePopup');
 const popupBody = document.getElementById('popupBody');
@@ -212,7 +214,6 @@ copyResultBtn.addEventListener('click', () => {
   }
 });
 
-// === Try Container Logic ===
 function toggleTryContainer(card, item) {
   let container = card.querySelector('.try-container');
   if (!container) container = createTryContainer(card, item);
@@ -246,7 +247,6 @@ function createTryContainer(card, item) {
   return container;
 }
 
-// === Execute API ===
 async function executeApi(item) {
   popupTitle.textContent = `Hasil ${item.name}`;
   popupBody.innerHTML = `<div class="loading">Memuat...</div>`;
