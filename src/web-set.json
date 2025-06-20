@@ -12,7 +12,7 @@
     "defaultRequireKey": true
   },
   "categories": [
-     {
+    {
       "name": "Search",
       "items": [
         {
@@ -44,7 +44,7 @@
           "params": {
             "query": "Masukkan Query yang ingin dicari"
           }
-        }        
+        }
       ]
     },
     {
@@ -109,7 +109,17 @@
           "params": {
             "url": "url dari youtube"
           }
-        }                
+        },
+        {
+          "name": "Facebook Downloader",
+          "desc": "Download video dari Facebook publik",
+          "path": "/downloader/facebookdl?url=",
+          "status": "ready",
+          "requireKey": false,
+          "params": {
+            "url": "url dari video facebook publik"
+          }
+        }
       ]
     },
     {
@@ -149,7 +159,7 @@
           "params": {
             "text": "Teks puisi mu."
           }
-        },        
+        },
         {
           "name": "LuminAI",
           "desc": "Chat dengan LuminAI",
@@ -169,7 +179,20 @@
           "params": {
             "prompt": "Prompt untuk Buat gambar."
           }
-        }       
+        }
+      ]
+    },
+    {
+      "name": "Quotes",
+      "items": [
+        {
+          "name": "Quotes Galau",
+          "desc": "Ambil quotes sad dan galau secara random",
+          "path": "/random/quotes",
+          "status": "ready",
+          "requireKey": false,
+          "params": {}
+        }
       ]
     },
     {

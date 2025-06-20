@@ -7,12 +7,12 @@
     "status": "Online!"
   },
   "apiSettings": {
-    "creator": "Xyzan - Anomaki",
+    "creator": "Hann - Ind",
     "globalKey": ["yo"],
     "defaultRequireKey": true
   },
   "categories": [
-     {
+    {
       "name": "Search",
       "items": [
         {
@@ -170,6 +170,19 @@
             "prompt": "Prompt untuk Buat gambar."
           }
         }       
+      ]
+    },
+    {
+      "name": "Quotes",
+      "items": [
+        {
+          "name": "Quotes Galau",
+          "desc": "Ambil quotes sad dan galau secara random",
+          "path": "/random/quotes",
+          "status": "ready",
+          "requireKey": false,
+          "params": {}
+        }
       ]
     },
     {

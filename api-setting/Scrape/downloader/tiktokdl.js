@@ -1,32 +1,34 @@
 const axios = require('axios');
 
-async function scrapeTikTok(url) {
-  const headers = {
-    'accept': '*/*',
-    'accept-language': 'en',
-    'content-type': 'application/json',
-    'g-footer': '1fa90cd16845ab55424f3a13641c4c19',
-    'g-timestamp': '1747114488753',
-    'origin': 'https://snapany.com',
-    'priority': 'u=1, i',
-    'referer': 'https://snapany.com/',
-    'sec-fetch-dest': 'empty',
-    'sec-fetch-mode': 'cors',
-    'sec-fetch-site': 'same-site',
-    'user-agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1',
-  };
-
-  const data = {
-    "link": url
-  };
+export default async function handler(req, res) {
+  const { url } = req.query;
+  if (!url) return res.status(400).json({ error: 'Parameter ?url= diperlukan' });
 
   try {
-    const response = await axios.post('https://api.snapany.com/v1/extract', data, { headers: headers });
-    return response.data;
-  } catch (error) {
-    console.error('Error:', error);
-    return { error: 'Request failed' };
+    const headers = {
+      'accept': '*/*',
+      'content-type': 'application/json',
+      'origin': 'https://snapany.com',
+      'referer': 'https://snapany.com/',
+      'user-agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X)...',
+    };
+
+    const response = await axios.post('https://api.snapany.com/v1/extract', { link: url }, { headers });
+
+    const data = response.data.data;
+
+    res.status(200).json({
+      title: data.title,
+      thumbnail: data.cover,
+      video_no_wm: data.videoUrl,
+      music: data.music,
+      duration: data.duration,
+      play_count: data.play_count,
+      digg_count: data.digg_count,
+      caption: data.title,
+      tags: data.hashtags || []
+    });
+  } catch (err) {
+    res.status(500).json({ error: 'Gagal fetch data', message: err.message });
   }
 }
-
-module.exports = scrapeTikTok;
