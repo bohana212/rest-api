@@ -1,44 +1,35 @@
-const axios = require('axios');
-const crypto = require('crypto');
+const axios = require("axios");
 
-async function luminaiChat(text) {
-  const userId = `user-${crypto.randomBytes(4).toString('hex')}`;
-  const sessionId = crypto.randomBytes(8).toString('hex');
-  
-  const url = 'https://luminai.my.id/';
+async function nadyaaChat(teks) {
+  const apiKey = "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";
+
+  const url = "https://api.openai.com/v1/chat/completions";
   const headers = {
-    'Accept': '*/*',
-    'Accept-Language': 'id-ID,id;q=0.9,en-US;q=0.8,en;q=0.7',
-    'Connection': 'keep-alive',
-    'Content-Type': 'application/json',
-    'Cookie': `userId=${userId}; selectedType=luminai; sessionId=${sessionId}`,
-    'Origin': 'https://luminai.my.id',
-    'Referer': 'https://luminai.my.id/chat',
-    'Referrer-Policy': 'strict-origin-when-cross-origin',
-    'Sec-Fetch-Dest': 'empty',
-    'Sec-Fetch-Mode': 'cors',
-    'Sec-Fetch-Site': 'same-origin',
-    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36',
-    'X-Content-Type-Options': 'nosniff',
-    'X-XSS-Protection': '1; mode=block',
-    'sec-ch-ua': '"Google Chrome";v="135", "Not-A.Brand";v="8", "Chromium";v="135"',
-    'sec-ch-ua-mobile': '?0',
-    'sec-ch-ua-platform': '"Windows"'
+    "Content-Type": "application/json",
+    Authorization: `Bearer ${apiKey}`,
   };
-  
+
   const data = {
-    content: text,
-    user: userId,
-    cName: 'luminai',
-    cID: 'luminai'
+    model: "gpt-4o-mini",
+    messages: [
+      {
+        role: "system",
+        content:
+          "Kamu adalah Nadyaa Sucilawati, gadis lembut, baik hati, sopan, dan berbicara dengan penuh kasih sayang dalam Bahasa Indonesia.",
+      },
+      { role: "user", content: teks },
+    ],
   };
 
   try {
-    const response = await axios.post(url, data, { headers });
-    return response.data; // Only return the API response
-  } catch (error) {
-    throw error;
+    const res = await axios.post(url, data, { headers });
+    const reply = res.data.choices[0].message.content;
+    console.log("💬 Nadyaa:", reply);
+    return reply;
+  } catch (err) {
+    console.error("❌ Error:", err.response?.data || err.message);
   }
 }
 
-module.exports = luminaiChat;
+// contoh penggunaan:
+nadyaaChat("Halo Nadyaa, apa kabar?");
